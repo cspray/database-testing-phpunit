@@ -44,6 +44,9 @@ final class DatabaseTestingExtension implements Extension {
 
             public function notify(Started $event) : void {
                 $firstTest = $event->testSuite()->tests()->asArray()[0];
+                if (!$firstTest->isTestMethod()) {
+                    return;
+                }
                 assert($firstTest instanceof TestMethod);
 
                 $reflection = new \ReflectionClass($firstTest->className());
@@ -88,7 +91,7 @@ final class DatabaseTestingExtension implements Extension {
             ) {}
 
             public function notify(PreparationStarted $event) : void {
-                if ($this->data->cleanupStrategy !== null && $event->test()->isTestMethod()) {
+                if ($this->data->connectionAdapter !== null) {
                     $testMethod = $event->test();
                     assert($testMethod instanceof TestMethod);
                     $test = FixtureAttributeAwareDatabaseTest::fromTestMethodWithPossibleFixtures(
@@ -109,7 +112,7 @@ final class DatabaseTestingExtension implements Extension {
             ) {}
 
             public function notify(TestFinished $event) : void {
-                if ($this->data->cleanupStrategy !== null && $event->test()->isTestMethod()) {
+                if ($this->data->cleanupStrategy !== null) {
                     $testMethod = $event->test();
                     assert($testMethod instanceof TestMethod);
                     $test = FixtureAttributeAwareDatabaseTest::fromTestMethodWithPossibleFixtures(
@@ -130,11 +133,13 @@ final class DatabaseTestingExtension implements Extension {
             ) {}
 
             public function notify(TestSuiteFinished $event) : void {
-                if (!$event->testSuite()->isForTestClass() || $this->data->connectionAdapter === null) {
+                if ($this->data->connectionAdapter === null) {
                     return;
                 }
 
                 $this->data->connectionAdapter->closeConnection();
+                $this->data->connectionAdapter = null;
+                $this->data->cleanupStrategy = null;
             }
         };
     }

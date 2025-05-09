@@ -1,6 +1,6 @@
 {
   "name": "cspray/database-testing-phpunit",
-  "description": "",
+  "description": "A testing extension for cspray/database-testing to integrate with PHPUnit.",
   "require": {
     "php": "^8.3",
     "cspray/database-testing": "dev-main",
@@ -18,5 +18,8 @@
     "psr-4": {
       "Cspray\\DatabaseTesting\\PhpUnit\\Tests\\": "tests"
     }
+  },
+  "suggest": {
+    "cspray/database-testing-pdo": "dev-main"
   }
 }
