@@ -70,8 +70,10 @@ namespace Cspray\DatabaseTesting\PhpUnit\Demo;
 
 use Cspray\DatabaseTesting\DatabaseCleanup\TransactionWithRollback;
 use Cspray\DatabaseTesting\Pdo\Sqlite\SqliteConnectionAdapterFactory;
-use Cspray\DatabaseTesting\PhpUnit\InjectTestDatabase;use Cspray\DatabaseTesting\PhpUnit\RequiresTestDatabase;
-use Cspray\DatabaseTesting\TestDatabase;use PHPUnit\Framework\TestCase;
+use Cspray\DatabaseTesting\PhpUnit\InjectTestDatabase;
+use Cspray\DatabaseTesting\PhpUnit\RequiresTestDatabase;
+use Cspray\DatabaseTesting\TestDatabase;
+use PHPUnit\Framework\TestCase;
 
 #[RequiresTestDatabase(
     new SqliteConnectionAdapterFactory(
@@ -98,7 +100,9 @@ In our example, we're going to load tests both in `setUp` and as an attribute on
 namespace Cspray\DatabaseTesting\PhpUnit\Demo;
 
 use Cspray\DatabaseTesting\DatabaseCleanup\TransactionWithRollback;
-use Cspray\DatabaseTesting\Fixture\LoadFixture;use Cspray\DatabaseTesting\Fixture\SingleRecordFixture;use Cspray\DatabaseTesting\Pdo\Sqlite\SqliteConnectionAdapterFactory;
+use Cspray\DatabaseTesting\Fixture\LoadFixture;
+use Cspray\DatabaseTesting\Fixture\SingleRecordFixture;
+use Cspray\DatabaseTesting\Pdo\Sqlite\SqliteConnectionAdapterFactory;
 use Cspray\DatabaseTesting\PhpUnit\InjectTestDatabase;
 use Cspray\DatabaseTesting\PhpUnit\RequiresTestDatabase;
 use Cspray\DatabaseTesting\TestDatabase;
