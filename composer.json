@@ -1,0 +1,22 @@
+{
+  "name": "cspray/database-testing-phpunit",
+  "description": "",
+  "require": {
+    "php": "^8.3",
+    "cspray/database-testing": "dev-main",
+    "phpunit/phpunit": "^11"
+  },
+  "require-dev": {
+    "cspray/database-testing-pdo": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "Cspray\\DatabaseTesting\\PhpUnit\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Cspray\\DatabaseTesting\\PhpUnit\\Tests\\": "tests"
+    }
+  }
+}
