@@ -65,7 +65,6 @@ final class DatabaseTestingExtension implements Extension {
                     $testDatabaseReflection = new \ReflectionClass(TestDatabase::class);
                     $testDatabase = $testDatabaseReflection->newInstanceWithoutConstructor();
                     $constructor = $testDatabaseReflection->getConstructor();
-                    $constructor->setAccessible(true);
                     $constructor->invoke($testDatabase, $this->data->connectionAdapter);
 
                     foreach ($reflection->getProperties() as $reflectionProperty) {
