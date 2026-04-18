@@ -4,7 +4,7 @@
   "require": {
     "php": "^8.3",
     "cspray/database-testing": "^0.5",
-    "phpunit/phpunit": "^11"
+    "phpunit/phpunit": "^12"
   },
   "require-dev": {
     "cspray/database-testing-pdo": "dev-main"
